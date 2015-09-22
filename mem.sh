@@ -12,8 +12,9 @@ do
 	prct=$1
 	#Here we take % of the total value
 	warnprct=$(echo "scale=2; $total * $prct" | bc)
+	#transform the warnprct in int
 	warnprct=${warnprct/.*}
-
+	#Compare if memory used it`s above or equal warnprct
 	if [ $used -ge $warnprct ];
 	then
 		notify-send "NOTIFY: Memory used it's too high"
